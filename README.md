@@ -39,7 +39,8 @@ Le projet utilise des variables d'environnement pour configurer la base de donn√
     DB_NAME=qlovers_db 
     DB_USER=postgres 
     DB_PASSWORD=yourpassword 
-    DB_HOST=db DB_PORT=5432
+    DB_HOST=db 
+    DB_PORT=5432
 ```
 ## 3. Lancer Docker
 
