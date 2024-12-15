@@ -6,13 +6,13 @@ services:
       - "8000:8000"
     volumes:
       - ./qloverserver:/app    # Synchronise le code local avec /app dans le conteneur
-    # env_file:
-    #   - .env                   # Charge les variables d'environnement depuis le fichier .env
+    env_file:
+      - .env                   # Charge les variables d'environnement depuis le fichier .env
     environment:
-      - DEBUG=True
-      - DATABASE_NAME=qlover
-      - DATABASE_USER=DB_USER=postgres
-      - DATABASE_PASSWORD=Antoinou2001!
+      - DEBUG=${DEBUG}
+      - DATABASE_NAME=${DB_NAME}
+      - DATABASE_USER=${DB_USER}
+      - DATABASE_PASSWORD=${DB_PASSWORD}
       - DATABASE_HOST=db
       - DATABASE_PORT=5432
     depends_on:
@@ -33,12 +33,12 @@ services:
   db:
     image: postgres:latest       # Utilise l'image PostgreSQL officielle
     container_name: postgres-db
-    # env_file:
-    #   - .env                   # Charge les variables d'environnement depuis le fichier .env
+    env_file:
+      - .env                   # Charge les variables d'environnement depuis le fichier .env
     environment:
-      POSTGRES_DB: qlover
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: Antoinou2001!
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     ports:
       - "5432:5432"            # Expose PostgreSQL en local sur le port 5432
     volumes:
