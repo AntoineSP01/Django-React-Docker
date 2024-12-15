@@ -35,11 +35,12 @@ cd <nom_du_dépôt>
 Le projet utilise des variables d'environnement pour configurer la base de données, les clés secrètes et d'autres paramètres. Assurez-vous d'ajouter un fichier `.env` à la racine du projet, avec les informations nécessaires.
 
 ### Exemple de contenu pour `.env` :
-    - DB_NAME=qlovers_db 
-    - DB_USER=postgres 
-    - DB_PASSWORD=yourpassword 
-    - DB_HOST=db DB_PORT=5432
-
+```bash
+    DB_NAME=qlovers_db 
+    DB_USER=postgres 
+    DB_PASSWORD=yourpassword 
+    DB_HOST=db DB_PORT=5432
+```
 ## 3. Lancer Docker
 
 Dans la racine de votre projet, vous trouverez un fichier `docker-compose.yml` qui définit les services Docker pour le backend Django, la base de données PostgreSQL et le frontend React. Pour démarrer le projet avec Docker, utilisez la commande suivante :
