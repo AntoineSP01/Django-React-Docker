@@ -26,6 +26,7 @@ Clonez le projet depuis le dépôt Git :
 ```bash
 git clone <url_du_dépôt>
 cd <nom_du_dépôt>
+```
 
 # Configuration et Lancement du Projet
 
@@ -45,12 +46,12 @@ Dans la racine de votre projet, vous trouverez un fichier `docker-compose.yml` q
 
 ```bash
 docker-compose up --build
-
+```
 ## 4. Initialiser la base de données
 
 Une fois les conteneurs lancés, vous devez initialiser la base de données (en appliquant les migrations Django). Pour ce faire, vous pouvez exécuter la commande suivante dans un nouveau terminal :
 
 ```bash 
 docker-compose exec backend python manage.py migrate
-
+```
 Maintenant vous pouvez utilisé le site comme bon vous semble.
