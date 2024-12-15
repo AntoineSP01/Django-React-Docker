@@ -16,7 +16,7 @@ function App() {
       
       const fetchData = async () => {
         try {
-          const response = await axios.get("http://127.0.0.1:8888/api/article/");
+          const response = await axios.get("http://127.0.0.1:8000/api/article/");
           setArticles(response.data); 
         } catch (err) {
           console.error("Erreur lors de la récupération des données :", err);
@@ -40,7 +40,7 @@ function App() {
 
     const deleteArticle = async (id) => {
       try {
-        await axios.delete(`http://127.0.0.1:8888/api/articles/${id}/`);
+        await axios.delete(`http://127.0.0.1:8000/api/article/${id}/`);
         const data = articles.filter(article => article.id !== id);
         setArticles(data);
         console.log(`Article avec l'ID ${id} supprimé`);

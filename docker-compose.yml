@@ -1,0 +1,48 @@
+services:
+  backend:
+    build: ./qloverserver      # Utilise le Dockerfile dans qloverserver/
+    container_name: django-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./qloverserver:/app    # Synchronise le code local avec /app dans le conteneur
+    # env_file:
+    #   - .env                   # Charge les variables d'environnement depuis le fichier .env
+    environment:
+      - DEBUG=True
+      - DATABASE_NAME=qlover
+      - DATABASE_USER=DB_USER=postgres
+      - DATABASE_PASSWORD=Antoinou2001!
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
+    depends_on:
+      - db
+
+  frontend:
+    build: ./qloverclient      # Utilise le Dockerfile dans qloverclient/
+    container_name: react-frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./qloverclient:/app    # Synchronise le code local avec /app
+      - /app/node_modules      # Évite les conflits avec node_modules
+    stdin_open: true
+    depends_on:
+      - backend
+
+  db:
+    image: postgres:latest       # Utilise l'image PostgreSQL officielle
+    container_name: postgres-db
+    # env_file:
+    #   - .env                   # Charge les variables d'environnement depuis le fichier .env
+    environment:
+      POSTGRES_DB: qlover
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Antoinou2001!
+    ports:
+      - "5432:5432"            # Expose PostgreSQL en local sur le port 5432
+    volumes:
+      - pg_data:/var/lib/postgresql/data  # Persistance des données de la DB
+
+volumes:
+  pg_data:                     # Déclare le volume pour persister les données PostgreSQL

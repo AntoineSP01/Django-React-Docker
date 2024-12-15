@@ -19,7 +19,7 @@ function Form() {
       e.preventDefault();
 
       try {
-      const response = await axios.post("http://127.0.0.1:8888/api/articles/", formData);
+      const response = await axios.post("http://127.0.0.1:8000/api/article/", formData);
       console.log("Form data submitted successfully:", response.data);
         setFormData({ topic: "", author: "", body: "" });
       } catch (error) {

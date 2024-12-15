@@ -19,7 +19,7 @@ function UpdateArticleModal({ article, closeModal }) {
     e.preventDefault();
     try {
       const response = await axios.put(
-        `http://127.0.0.1:8888/api/articles/${article.id}/`,
+        `http://127.0.0.1:8000/api/article/${article.id}/`,
         formData
       );
       console.log("Article mis à jour :", response.data);
